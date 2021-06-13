@@ -1,0 +1,27 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Attach to node that is already running.
+            "type": "node",
+            "request": "attach",
+            "name": "Attach Node",
+            "port": 3000,
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "processId": "${command:PickProcess}",
+        },
+        {
+            // Launch Chrome
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/front",
+        },
+    ],
+}

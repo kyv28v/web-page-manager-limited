@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" class="fix-nav page-header">
+  <div>
+    {{ menu.selectedTitle }}{{ page.dirtyCheck() ? " *" : "" }}
+  </div>
+  <span class="nav-spacer"></span>
+
+  <button mat-icon-button (click)="getCsv()" *ngIf="getCsvEvent.observers.length > 0">
+      <mat-icon>download</mat-icon>
+  </button>
+  <button mat-icon-button (click)="refresh()">
+      <mat-icon>refresh</mat-icon>
+  </button>
+  <button mat-icon-button (click)="save()" *ngIf="user.authCheck(22)">
+      <mat-icon>save</mat-icon>
+  </button>
+</mat-toolbar>

@@ -1,0 +1,42 @@
+.table-frame {
+    overflow: auto;
+    height: calc(100vh - 120px);
+    border: 1px solid #999999;
+    border-collapse: collapse;
+}
+
+td, th {
+    vertical-align: middle;
+    padding: 5px;
+    border: 1px solid #999999;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+.mat-sort-header-container {
+    align-items: center;
+}
+
+.btn-icon {
+    width: 55px;
+}
+
+.upload-message {
+    text-align: center;
+}
+
+.file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}

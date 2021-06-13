@@ -1,0 +1,50 @@
+<app-page-header
+(refreshEvent)="refreshPage()"
+(saveEvent)="savePage()"
+>
+</app-page-header>
+
+<div class="table-frame" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+  <table matSort (matSortChange)="sortData($event)">
+    <tr>
+      <th mat-sort-header="name">{{ 'filer.name' | translate }}</th>
+      <th mat-sort-header="lastModifiedDate">{{ 'filer.lastModifiedDate' | translate }}</th>
+      <th mat-sort-header="uploadedDate">{{ 'filer.uploadedDate' | translate }}</th>
+      <th mat-sort-header="size">{{ 'filer.size' | translate }}</th>
+      <th mat-sort-header="type">{{ 'filer.type' | translate }}</th>
+      <!-- <th mat-sort-header="filer.id">{{ 'id' | translate }}</th> -->
+      <th *ngIf="user.authCheck(22)"></th>
+      <th *ngIf="user.authCheck(22)"></th>
+    </tr>
+  
+    <tr *ngFor="let file of page?.data?.files">
+      <td>{{ file.name }}</td>
+      <td>{{ file.lastModifiedDate | date:'yyyy/MM/dd HH:mm:ss' }}</td>
+      <td>{{ file.uploadedDate | date:'yyyy/MM/dd HH:mm:ss' }}</td>
+      <td style="text-align: right;">{{ file.size?.toSize() }}</td>
+      <td>{{ file.type }}</td>
+      <!-- <td>{{ file.id }}</td> -->
+      <td *ngIf="user.authCheck(22)" class="btn-icon">
+        <button mat-menu-item (click)="download(file)" class="btn-icon">
+          <mat-icon color="primary">cloud_download</mat-icon>
+        </button>            
+      </td>
+      <td *ngIf="user.authCheck(22)" class="btn-icon">
+        <button mat-menu-item (click)="delete(file)" class="btn-icon">
+          <mat-icon color="warn">delete_forever</mat-icon>
+        </button>            
+      </td>
+    </tr>
+  </table>
+
+  <div class="upload-message">
+    <div>To upload, drop files</div>
+    <div>or</div>
+    <div>
+      <label class="file-upload" (change)="onSelectFiles($event)">
+        <input type="file"/>
+        Select files
+      </label>
+    </div>
+  </div>
+</div>

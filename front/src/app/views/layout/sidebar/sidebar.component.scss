@@ -1,0 +1,113 @@
+#sidebar {
+    width: calc(100% - 10px);
+    // position: fixed;
+    // top: 56px;
+    padding: 5px;
+    bottom: 0;
+    line-height: 1.8;
+    // background: #fff;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+    z-index: 999;
+    overflow: hidden;
+    .mat-nav-list {
+        width: 100%;
+        a {
+            .mat-icon {
+                margin-right: 15px;
+            }
+            display: block;
+        }
+    }
+}
+.nested-menu {
+    .nested {
+        list-style-type: none;
+    }
+    .submenu {
+        display: none;
+        height: 0;
+    }
+    & .expand {
+        &.submenu {
+            display: block;
+            list-style-type: none;
+            height: auto;
+            margin: 0;
+            li {
+                a {
+                    padding: 10px;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+// @media screen and (max-width: 992px) {
+//     #sidebar {
+//         left: -250px;
+//     }
+// }
+
+.root-menu {
+    border-top: solid;
+    border-top-width: 1px;
+    border-top-color: lightgrey;
+}
+
+::ng-deep .mat-menu-content {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+}
+.mat-menu-item {
+    height: 30px;
+    line-height: 30px;
+}
+
+.menu-folder {
+    white-space: nowrap;
+    width: 100%;
+}
+
+.menu-page {
+    white-space: nowrap;
+    width: 100%;
+}
+
+.menu-left {
+    display: inline-block !important;
+    width: 100%;
+    // color: black;
+    text-decoration: none;
+}
+
+.menu-right {
+    display: inline-block !important;
+    width: 25px;
+    // color: black;
+    text-decoration: none;
+    position: sticky !important;
+    right: 0% !important;
+}
+
+.menu-left mat-icon {
+    vertical-align: middle;
+}
+
+.menu-right mat-icon {
+    vertical-align: middle;
+    visibility: hidden;
+}
+  
+.menu-right:hover mat-icon {
+    vertical-align: middle;
+    visibility: visible;
+}
+
+.menu-left:hover + .menu-right mat-icon {
+    vertical-align: middle;
+    visibility: visible;
+}
+
+.title-input {
+    width: 100%;
+}

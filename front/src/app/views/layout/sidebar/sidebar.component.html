@@ -1,0 +1,155 @@
+<div id="sidebar" [ngClass]="shared.theme + '-color'">
+    <!-- ホーム -->
+    <tree-root #treeHome [nodes]="[{ name: 'Home' }]">
+        <ng-template #treeNodeWrapperTemplate let-node let-index="index">
+            <div class="node-wrapper" [class.root-menu]="node.data._id">
+                <div class="node-content-wrapper menu-left" [ngClass]="shared.theme + '-color'"
+                    [class.node-content-wrapper-active]="node.isActive"
+                    [class.node-content-wrapper-focused]="node.isFocused"
+                >
+                    <div class="menu-left">
+                        <mat-icon class="sidenav-icon">person</mat-icon>{{ user.name }}
+                    </div>
+                </div>
+                <div class="menu-right">
+                    <a [matMenuTriggerFor]="homeMenu">
+                        <mat-icon class="sidenav-icon" *ngIf="user.authCheck(11) || user.authCheck(14)">more_horiz</mat-icon>
+                    </a>
+                </div>
+            </div>
+        </ng-template>            
+    </tree-root>
+
+    <!-- ホームのコンテキストメニュー -->
+    <mat-menu #homeMenu="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="addMenuMenu">
+            <mat-icon>add</mat-icon>
+            <span>{{ 'sideMenu.addMenu' | translate }}</span>
+        </button>
+        <button mat-menu-item (click)="showUserInfo()">
+            <mat-icon>info</mat-icon>
+            <span>{{ 'sideMenu.profile' | translate }}</span>
+        </button>
+    </mat-menu>
+    <!-- ホームのコンテキストメニュー（子項目） -->
+    <mat-menu #addMenuMenu="matMenu">
+        <button mat-menu-item (click)="createMenu()" *ngIf="user.authCheck(11)">
+            <mat-icon>add</mat-icon>
+            <span>{{ 'sideMenu.createNewMenu' | translate }}</span>
+        </button>
+        <button mat-menu-item (click)="appendMenu()" *ngIf="user.authCheck(14)">
+            <mat-icon>add</mat-icon>
+            <span>{{ 'sideMenu.appendExistingMenu' | translate }}</span>
+        </button>
+    </mat-menu>
+
+    <!-- メニューツリー -->
+    <tree-root #tree [nodes]="menu.menus" [options]="options" (moveNode)="onMoveNode($event)">
+        <ng-template #treeNodeWrapperTemplate let-node let-index="index">
+            <div class="node-wrapper" [class.root-menu]="node.data._id">
+                <tree-node-expander [node]="node"></tree-node-expander>
+                <!-- メニュータイトル部分 -->
+                <div class="node-content-wrapper menu-left" [ngClass]="shared.theme + '-color'"
+                    [class.node-content-wrapper-active]="node.isActive"
+                    [class.node-content-wrapper-focused]="node.isFocused"
+                    (click)="node.mouseAction('click', $event)"
+                    (dblclick)="node.mouseAction('dblClick', $event)"
+                    (contextmenu)="node.mouseAction('contextMenu', $event)"
+                    (treeDrop)="node.onDrop($event)"
+                    [treeAllowDrop]="node.allowDrop"
+                    [treeDrag]="node"
+                    [treeDragEnabled]="node.allowDrag()"
+                >
+
+                    <tree-node-content [node]="node" [index]="index"></tree-node-content>
+                
+                    <!-- フォルダー表示 -->
+                    <div *ngIf="!node.data.page" class="menu-folder">
+                        <input *ngIf="node.data.isTitleInput" #titleInput type="text" class="title-input" [(ngModel)]="node.data.title" (blur)="changeTitleInput(node)" (focus)="select($event)">
+                        <div *ngIf="!node.data.isTitleInput" (dblclick)="node.data.isTitleInput = user.authCheck(12);">{{ node.data.title }}</div>
+                    </div>
+                    <!-- ページ表示 -->
+                    <div *ngIf="node.data.page" class="menu-page">
+                        <!-- <a class="menu-left" [routerLinkActive]="'active'" [routerLink]="['/' + node.data.page.type, node.data.page.id]" (click)="selectMenu(node.data)"> -->
+                        <div *ngIf="node.data.isTitleInput">
+                            <mat-icon>{{ node.data.page.type | pagesIcon }}</mat-icon>
+                            <input #titleInput type="text" class="title-input" [(ngModel)]="node.data.title" (blur)="changeTitleInput(node)" (focus)="select($event)">
+                        </div>
+                        <div *ngIf="!node.data.isTitleInput" (dblclick)="node.data.isTitleInput = user.authCheck(12);">
+                            <mat-icon>{{ node.data.page.type | pagesIcon }}</mat-icon>
+                            {{ node.data.title }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- フォルダーのコンテキストメニュー -->
+                <div *ngIf="!node.data.page" class="menu-right">
+                    <!-- アイコン表示 -->
+                    <a [matMenuTriggerFor]="folderMenu">
+                        <mat-icon class="sidenav-icon" *ngIf="user.authCheck(12)">more_horiz</mat-icon>
+                    </a>
+                    <!-- コンテキストメニュー -->
+                    <mat-menu #folderMenu="matMenu">
+                        <button mat-menu-item (click)="addFolder(node)">
+                            <mat-icon>create_new_folder</mat-icon>
+                            <span>{{ 'sideMenu.addFolder' | translate }}</span>
+                        </button>
+                        <button mat-menu-item [matMenuTriggerFor]="addFolderMenu">
+                            <mat-icon>add</mat-icon>
+                            <span>{{ 'sideMenu.addPage' | translate }}</span>
+                        </button>
+                        <button mat-menu-item (click)="deleteFolder(node)" *ngIf="!node.data._id">
+                            <mat-icon>delete_forever</mat-icon>
+                            <span>{{ 'sideMenu.deleteFolder' | translate }}</span>
+                        </button>
+                        <button mat-menu-item (click)="releaseMenu(node)" *ngIf="node.data._id">
+                            <mat-icon>remove_circle</mat-icon>
+                            <span>{{ 'sideMenu.releaseMenu' | translate }}</span>
+                        </button>
+                        <button mat-menu-item (click)="deleteMenu(node)" *ngIf="node.data._id">
+                            <mat-icon>delete_forever</mat-icon>
+                            <span>{{ 'sideMenu.deleteMenu' | translate }}</span>
+                        </button>
+                        <button mat-menu-item (click)="folderProperty(node)"*ngIf="!node.data._id">
+                            <mat-icon>info</mat-icon>
+                            <span>{{ 'sideMenu.property' | translate }}</span>
+                        </button>
+                        <button mat-menu-item (click)="menuProperty(node)" *ngIf="node.data._id">
+                            <mat-icon>info</mat-icon>
+                            <span>{{ 'sideMenu.property' | translate }}</span>
+                        </button>
+                    </mat-menu>
+                    <!-- コンテキストメニュー（子項目） -->
+                    <mat-menu #addFolderMenu="matMenu">
+                        <span *ngFor="let pageDefine of pageDefines; let idx = index">
+                            <button mat-menu-item (click)="addPage(node, pageDefine)">
+                                <mat-icon>{{ pageDefine.icon }}</mat-icon>
+                                <span>{{ pageDefine.name | translate }}</span>
+                            </button>
+                        </span>
+                    </mat-menu>
+                </div>
+
+                <!-- ページのコンテキストメニュー -->
+                <div *ngIf="node.data.page" class="menu-right">
+                    <!-- アイコン表示 -->
+                    <a [matMenuTriggerFor]="pageMenu">
+                        <mat-icon *ngIf="user.authCheck(12)">more_horiz</mat-icon>
+                    </a>
+                    <!-- コンテキストメニュー -->
+                    <mat-menu #pageMenu="matMenu">
+                        <button mat-menu-item (click)="deletePage(node)">
+                            <mat-icon>delete_forever</mat-icon>
+                            <span>{{ 'sideMenu.deletePage' | translate }}</span>
+                        </button>
+                        <button mat-menu-item (click)="pageProperty(node)">
+                            <mat-icon>info</mat-icon>
+                            <span>{{ 'sideMenu.property' | translate }}</span>
+                        </button>
+                    </mat-menu>
+                </div>
+
+            </div>
+        </ng-template>            
+    </tree-root>
+</div>

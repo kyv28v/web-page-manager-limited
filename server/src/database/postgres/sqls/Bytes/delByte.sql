@@ -1,0 +1,1 @@
+DELETE FROM bytes WHERE _id = $1

@@ -1,0 +1,16 @@
+mat-sidenav-container {
+    top: var(--topnav-height);
+    height: calc(100% - var(--topnav-height));
+}
+
+mat-sidenav-content {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sidebar {
+    resize: horizontal;
+    overflow-x: hidden;
+}

@@ -1,0 +1,43 @@
+.table-frame {
+    overflow: auto;
+    height: calc(100vh - 120px);
+}
+
+td, th {
+    text-align: left;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.btn-cell {
+    width: 20px;
+}
+
+.menu-right {
+    float: right;
+    vertical-align: middle;
+    visibility: visible;
+}
+
+.menu-right:hover {
+    float: right;
+    vertical-align: middle;
+    visibility: visible;
+}
+
+.menu-right mat-icon {
+    float: right;
+    vertical-align: middle;
+    visibility: hidden;
+}
+
+.menu-right:hover mat-icon {
+    float: right;
+    vertical-align: middle;
+    visibility: visible;
+}

@@ -1,0 +1,62 @@
+<app-page-header
+  (getCsvEvent)="getCsv()"
+  (refreshEvent)="refreshPage()"
+  (saveEvent)="savePage()"
+>
+</app-page-header>
+<div class="form-group table-frame">
+  <div class="table-responsive">
+  <table class="bs-table table-bordered">
+    <thead>
+      <tr>
+        <th *ngFor="let h of page?.data?.header; let idx = index">
+          {{ h | translate }}
+          <a class="menu-right" [matMenuTriggerFor]="tableMenu" *ngIf="user.authCheck(22)">
+            <mat-icon class="sidenav-icon">more_horiz</mat-icon>
+          </a>
+          <!-- テーブルのコンテキストメニュー -->
+          <mat-menu #tableMenu="matMenu">
+            <button mat-menu-item (click)="editTitle(idx)">
+              <mat-icon>edit</mat-icon>
+              <span>{{ 'Edit Title' | translate }}</span>
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="insertColMenu">
+              <mat-icon>add</mat-icon>
+              <span>{{ 'Insert Column' | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="deleteCol(idx)">
+              <mat-icon>delete</mat-icon>
+              <span>{{ 'Delete This Column' | translate }}</span>
+            </button>
+          </mat-menu>
+          <!-- テーブルのコンテキストメニュー（子項目） -->
+          <mat-menu #insertColMenu="matMenu">
+            <button mat-menu-item (click)="insertCol(idx)">
+              <mat-icon>add</mat-icon>
+              <span>{{ 'Insert Column Left' | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="insertCol(idx + 1)">
+              <mat-icon>add</mat-icon>
+              <span>{{ 'Insert Column Right' | translate }}</span>
+            </button>
+          </mat-menu>
+        </th>
+        <th class="btn-cell" *ngIf="user.authCheck(22)"></th>
+        <th class="btn-cell" *ngIf="user.authCheck(22)"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of page?.data?.datas; let idx = index">
+        <td *ngFor="let d of data">
+          {{ d | translate }}
+        </td>
+        <td (click)="editData(data)" *ngIf="user.authCheck(22)"><mat-icon color="primary">edit</mat-icon></td>
+        <td (click)="deleteRow(idx)" *ngIf="user.authCheck(22)"><mat-icon color="warn">delete_forever</mat-icon></td>
+      </tr>
+      <tr *ngIf="user.authCheck(22)">
+        <td (click)="insertRow()"><mat-icon>add</mat-icon></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

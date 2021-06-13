@@ -1,0 +1,1 @@
+INSERT INTO bytes (byte) VALUES ($1) RETURNING _id;

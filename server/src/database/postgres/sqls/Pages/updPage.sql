@@ -1,0 +1,1 @@
+UPDATE pages SET data = $2 WHERE _id = $1

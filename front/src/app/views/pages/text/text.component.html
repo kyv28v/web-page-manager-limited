@@ -1,0 +1,6 @@
+<app-page-header
+  (refreshEvent)="refreshPage()"
+  (saveEvent)="savePage()"
+>
+</app-page-header>
+<textarea class="textarea-full" name="textarea" style="resize: both;" *ngIf="page?.data" [(ngModel)]="page.data.text" [readonly]="!user.authCheck(22)"></textarea>

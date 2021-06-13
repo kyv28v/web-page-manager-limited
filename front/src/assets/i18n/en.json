@@ -1,0 +1,155 @@
+{
+    "search": "Search",
+    "register": "Register",
+    "add": "Add",
+    "update": "Update",
+    "delete": "Delete",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "error": "Error",
+    "leavePage": "Are you sure you want to leave this page?\nYour changes may not be saved.",
+    "refreshPage": "Are you sure you want to refresh this page?\nYour changes may not be saved.",
+    "requiredError": "Input is required.",
+    "login": {
+        "login": "Login",
+        "logout": "Logout",
+        "logoutConfirm": "Do you want to log out?",
+        "userId": "User Id",
+        "userCode": "User Id",
+        "password": "Password",
+        "enterUserId": "Enter User Id",
+        "enterPassword": "Enter Password",
+        "adminLogin": "Login as admin user",
+        "guestLogin": "Login as guest user",
+        "sessionExpired": "Session has expired. \nPlease log in again."
+    },
+    "topMenu": {
+        "language": "Language",
+        "japanese": "Japanese",
+        "english": "English",
+        "userManage": "User Manage",
+        "changePassword": "Change Password",
+        "theme": "Theme"
+    },
+    "sideMenu": {
+        "name": "Name",
+        "menu": "Menu",
+        "subMenu": "Sub Menu",
+        "settings": "Settings",
+        "profile": "Profile",
+        "userId": "User Id",
+        "addMenu": "Add Menu",
+        "createNewMenu": "Create New Menu",
+        "newMenu": "New Menu",
+        "scopeType": "Scope",
+        "appendExistingMenu": "Append Existing Menu",
+        "addFolder": "Add Folder",
+        "newFolder": "New Folder",
+        "addPage": "Add Page",
+        "newPage": "New Page",
+        "deletePage": "Delete Page",
+        "deletePageConfirm": "Delete Page?",
+        "deleteFolder": "Delete Folder",
+        "deleteFolderConfirm": "Delete Folder?\nAll the item inside are also deleted.",
+        "releaseMenu": "Release Menu",
+        "releaseMenuConfirm": "Release Menu?\nIt just disappears, it is not deleted.\nYou can redisplay it at any time from 'Append Existing Menu'.",
+        "deleteMenu": "Delete Menu",
+        "deleteMenuConfirm": "Delete Menu?\nAll the item inside are also deleted.\nIt will also be deleted from all referenced users.",
+        "property": "Property",
+        "pageType": "Page Type",
+        "createUserName": "Create User Name",
+        "rootMenuMoveError": "The root menu cannot be moved to other menus.",
+        "outOfRootMenuError": "You cannot move out of the root menu."
+        },
+    "user": {
+        "userManage": "User Manage",
+        "id": "ID",
+        "code": "ID",
+        "name": "Name",
+        "age": "Age",
+        "sex": "Sex",
+        "sexDisp": "Sex",
+        "birthday": "Birthday",
+        "birthdayDisp": "Birthday",
+        "password": "Password",
+        "note": "Note",
+        "auth": "Auth",
+        "registerUser": "Register User",
+        "registerConfirm": "Do you want to register user?",
+        "deleteUser": "Delete User",
+        "deleteConfirm": "Do you want to delete user?",
+        "changePassword": "Change Password",
+        "changePasswordConfirm": "Do you want to change password?",
+        "oldPassword": "Old Password",
+        "newPassword": "New Password",
+        "newPassword2": "New Password(confirm)"
+    },
+    "page": {
+        "getException": "get page failed.\n{{message}}",
+        "saveException": "save page failed.\n{{message}}",
+        "saved": "saved"
+    },
+    "table": {
+        "delete": "Delete",
+        "deleteConfirm": "Do you want to delete data?"
+    },
+    "filer": {
+        "name": "Name",
+        "lastModifiedDate": "Last Modified Date",
+        "uploadedDate": "Uploaded Date",
+        "size": "Size",
+        "type": "Type",
+        "id": "ID",
+        "upload": "Upload",
+        "download": "Download",
+        "delete": "Delete",
+        "deleteConfirm": "Do you want to remove {{name}} ?",
+        "deletedMessage": "Deleted {{name}}",
+        "uploadedMessage": "Uploaded {{name}}",
+        "fileSaving": "Saving file...",
+        "fileUploading": "File uploading {{percentDone}}%",
+        "filePreparingToDownload": "Preparing to download...",
+        "fileDownloading": "File downloading {{percentDone}}%"
+    },
+    "enums": {
+        "sex": {
+            "man": "Man",
+            "woman": "Weman"
+        },
+        "scopeType": {
+            "public": "Anyone can add it to the menu and make it visible",
+            "private": "Appears only in the author's menu"
+        },
+        "week": {
+            "sunday": "sun",
+            "monday": "mon",
+            "tuesday": "tue",
+            "wednesday": "wed",
+            "thursday": "thu",
+            "friday": "fri",
+            "saturday": "sat"
+        },
+        "auth": {
+            "menu": {
+                "view": "View Menu",
+                "add": "Add Menu",
+                "edit": "Edit Menu",
+                "delete": "Delete Menu",
+                "append": "Append Menu"
+            },
+            "page": {
+                "view": "View Page",
+                "add": "Add Page",
+                "edit": "Edit Page",
+                "delete": "Delete Page"
+            },
+            "user": {
+                "view": "View User",
+                "add": "Add User",
+                "edit": "Edit User",
+                "delete": "Delete User"
+            }
+        }
+    }
+}

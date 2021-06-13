@@ -1,0 +1,1 @@
+UPDATE menus SET title = $2, nodes = $3, scope = $4 WHERE _id = $1
