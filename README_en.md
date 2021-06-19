@@ -12,9 +12,10 @@ You can select either PostgreSQL or MongoDB as the DB.
 
 ## Operation check environment
 
-・node.js       v10.24.0  
+・node.js       10.24.0  
 ・npm           7.6.3  
-・angular       9.1.3  
+・angular       11.1.0
+・MongoDB       4.4.4  
 ・PostgreSql    12.6
 
 ## install and setting.  

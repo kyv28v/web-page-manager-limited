@@ -13,9 +13,10 @@ DBはPostgreSQL、またはMongoDBのどちらかを選択可能です。
 
 ## 動作確認環境
 
-・node.js       v10.24.0  
+・node.js       10.24.0  
 ・npm           7.6.3  
-・angular       9.1.3  
+・angular       11.1.0
+・MongoDB       4.4.4  
 ・PostgreSql    12.6
 
 ## インストール、設定  
