@@ -19,11 +19,6 @@ import { TreeModule } from '@circlon/angular-tree-component';
 import { AngularResizedEventModule } from 'angular-resize-event';
 
 import { FlatpickrModule } from 'angularx-flatpickr';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-
-import { AgGridModule } from 'ag-grid-angular';
-import { QuillModule } from 'ngx-quill'
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopnavComponent } from './topnav/topnav.component';
@@ -59,12 +54,6 @@ import { FilerComponent } from '../pages/filer/filer.component';
         ToastrModule.forRoot(),
         AngularResizedEventModule,
         FlatpickrModule.forRoot(),
-        CalendarModule.forRoot({
-          provide: DateAdapter,
-          useFactory: adapterFactory,
-        }),
-        AgGridModule.withComponents([]),
-        QuillModule.forRoot(),
     ],
     declarations: [
         LayoutComponent,

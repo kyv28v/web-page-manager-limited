@@ -13,22 +13,6 @@
 // angular-tree
 @import '../../../node_modules/@circlon/angular-tree-component/css/angular-tree-component.css';
 
-// angular-calendar
-@import "../../../node_modules/angular-calendar/css/angular-calendar.css";
-
-// ag-grid
-@import "../../../node_modules/ag-grid-community/src/styles/ag-grid.scss";
-@import "../../../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
-
-// quill
-@import '../../../node_modules/quill/dist/quill.core.css';
-@import '../../../node_modules/quill/dist/quill.bubble.css';
-@import '../../../node_modules/quill/dist/quill.snow.css';
-
-.ag-theme-alpine {
-    @include ag-theme-alpine();
-}
-
 // define
 :root {
     --topnav-height: 40px;
