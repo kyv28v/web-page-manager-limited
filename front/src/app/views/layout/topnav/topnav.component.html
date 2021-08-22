@@ -33,6 +33,10 @@
             <mat-icon>format_color_fill</mat-icon>
             <span>{{ 'topMenu.theme' | translate }}</span>
         </button>
+        <button mat-menu-item (click)="openSystemInfo()">
+            <mat-icon>info</mat-icon>
+            <span>{{ 'system.systemInfo' | translate }}</span>
+        </button>
     </mat-menu>
       
     <mat-menu #language="matMenu">

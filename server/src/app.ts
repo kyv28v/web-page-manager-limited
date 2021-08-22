@@ -14,6 +14,7 @@ const indexRouter = require('./api/index');
 const dbRouter = require('./api/common/db');
 const authRouter = require('./api/common/auth');
 const changePasswordRouter = require('./api/common/changePassword');
+const systemRouter = require('./api/common/system');
 
 const app = express();
 
@@ -61,6 +62,7 @@ app.use('/api/*', async (req: any, res: any, next: any) => {
 app.use(multer().any());
 app.use('/api/common/db', dbRouter);
 app.use('/api/common/changePassword', changePasswordRouter);
+app.use('/api/common/system', systemRouter);
 
 // Angular routing
 app.use(express.static(path.join(__dirname, '../../front/dist')));

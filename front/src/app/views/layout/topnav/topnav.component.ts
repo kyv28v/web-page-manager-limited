@@ -275,4 +275,27 @@ export class TopnavComponent implements OnInit {
         // 画面全体にテーマを反映させるため、layputのイベントを呼び出す
         this.onThemeChangeEvent.emit(theme);
     }
+
+    // open system info dialog.
+    async openSystemInfo() {
+        // get system info.
+        const systemInfo: any = await this.http.get('api/common/system/systemInfo');
+        
+        // open dialog
+        const dialog = this.simpleDialog.open();
+        dialog.title = 'system.systemInfo';
+        dialog.message = '';
+        dialog.items = [
+            { label: 'system.clientBuildDt',    value: systemInfo.clientBuildDt,    inputtype: InputType.Display },
+            { label: 'system.serverBuildDt',    value: systemInfo.serverBuildDt,    inputtype: InputType.Display },
+            { label: 'system.gitLog',           value: systemInfo.gitLog,           inputtype: InputType.DisplayArea, rows: 20, cols: 100, },
+        ];
+        dialog.buttons = [
+          { class: 'btn-right', color:'primary', name: 'ok',     click: async () => { dialog.close('cancel'); } },
+        ];
+
+        // ダイアログの実行待ち
+        const result = await dialog.wait();
+        if (result !== 'ok') { return; }
+    }
 }

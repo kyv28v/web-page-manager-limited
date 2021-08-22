@@ -85,6 +85,12 @@
         "newPassword": "新しいパスワード",
         "newPassword2": "新しいパスワード(確認)"
     },
+    "system": {
+        "systemInfo": "システム情報",
+        "clientBuildDt": "クライアントビルド日時",
+        "serverBuildDt": "サーバービルド日時",
+        "gitLog": "変更履歴"
+    },
     "page": {
         "getException": "ページデータの取得に失敗しました。\n{{message}}",
         "saveException": "ページデータの保存に失敗しました。\n{{message}}",

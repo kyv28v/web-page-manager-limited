@@ -85,6 +85,12 @@
         "newPassword": "New Password",
         "newPassword2": "New Password(confirm)"
     },
+    "system": {
+        "systemInfo": "System Info",
+        "clientBuildDt": "Client Build DateTime",
+        "serverBuildDt": "Server Build DateTime",
+        "gitLog": "Revision History"
+    },
     "page": {
         "getException": "get page failed.\n{{message}}",
         "saveException": "save page failed.\n{{message}}",

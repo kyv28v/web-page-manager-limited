@@ -24,7 +24,9 @@
           </td>
           <!-- 表示のみ（複数行） -->
           <td *ngIf="item.inputtype == 'displayArea'">
-            <textarea class="form-control form-wide" rows="3" cols="40" name="item_value"
+            <textarea class="form-control form-wide" name="item_value"
+              rows="{{item.rows || 3}}"
+              cols="{{item.cols || 40}}" 
               [(ngModel)]="item.value" readonly></textarea>
           </td>
           <!-- テキスト -->

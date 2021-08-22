@@ -610,7 +610,7 @@ export class SidebarComponent implements OnInit {
             { label: 'user.sex', value: this.enumChangePipe.transform(this.user.sex, Enums.Sex), inputtype: InputType.Display },
             { label: 'user.birthday', value: this.datePipe.transform(this.user.birthday, 'yyyy/MM/dd'), inputtype: InputType.Display },
             { label: 'user.note', value: this.user.note, inputtype: InputType.DisplayArea },
-            { label: 'user.auth', value: selectedName, inputtype: InputType.DisplayArea },
+            { label: 'user.auth', value: selectedName, inputtype: InputType.DisplayArea, rows: 5, cols: 50, },
         ];
         dialog.buttons = [
             { class: 'btn-right', color:'primary', name: 'ok',     click: async () => { dialog.close('cancel'); } },
