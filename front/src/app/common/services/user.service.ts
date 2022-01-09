@@ -72,27 +72,33 @@ export class UserService {
 
   // ユーザ情報取得
   async getUser(userId: string) {
-    const values = JSON.stringify([userId]);
-    const ret: any = await this.http.get('api/common/db?action=Users/getUser&values=' + values);
-    if (ret.message !== null) {
-      alert('Get user failed.\n' + ret.message);
+    try {
+      const values = JSON.stringify([userId]);
+      const ret: any = await this.http.get('api/common/db?action=Users/getUser&values=' + values);
+      if (ret.message !== null) {
+        alert('Get user failed.\n' + ret.message);
+        return false;
+      }
+      if (ret.rowCount < 1) {
+        alert('Get user failed.\n' + 'rowCount=' + ret.rowCount);
+        return false;
+      }
+      const user = ret.rows[0];
+      this._id = user._id;
+      this.code = user.code;
+      this.name = user.name;
+      this.age = user.age;
+      this.sex = user.sex;
+      this.birthday = user.birthday;
+      this.note = user.note;
+      this.menus = user.menus;
+      this.auth = user.auth;
+      return true;
+    } catch (e) {
+      // alert('Get user failed.\n' + e.message);
+      console.log('Get user failed. ' + e.message);
       return false;
     }
-    if (ret.rowCount < 1) {
-      alert('Get user failed.\n' + 'rowCount=' + ret.rowCount);
-      return false;
-    }
-    const user = ret.rows[0];
-    this._id = user._id;
-    this.code = user.code;
-    this.name = user.name;
-    this.age = user.age;
-    this.sex = user.sex;
-    this.birthday = user.birthday;
-    this.note = user.note;
-    this.menus = user.menus;
-    this.auth = user.auth;
-    return true;
   }
 
   // メニュー情報の更新
